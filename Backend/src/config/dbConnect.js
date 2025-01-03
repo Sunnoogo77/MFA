@@ -1,7 +1,14 @@
 import {connect} from "mongoose";
-export const dbConnect = async () => {
+import dotenv from 'dotenv';
+
+dotenv.config();
+const dbConnect = async () => {
     try {
-        const mongoDbConnection = await connect(process.env.CONNECTION_STRING);
+        const connectionString = process.env.CONNECTION_STRING;
+        if (!connectionString) {
+            throw new Error('CONNECTION_STRING environment variable is not defined');
+        }
+        const mongoDbConnection = await connect(connectionString);
         console.log(`MongoDB connection SUCCESS : ${mongoDbConnection.connection.host}`);
     } catch (error) {
         console.log(`Database connection failed: ${error}`);
@@ -11,3 +18,4 @@ export const dbConnect = async () => {
 }
 
 export default dbConnect;
+
