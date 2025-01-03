@@ -3,8 +3,11 @@ import session from 'express-session';
 import passport from 'passport';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import { dbConnect } from './config/dbConnect.js';
 
 dotenv.config();
+dbConnect();
+
 
 const app = express();
 
@@ -13,19 +16,19 @@ const corsOptions = {
     //origin: process.env.FRONTEND_URL,
     origin: 'http://localhost:3001',
     credentials: true,
-    optionsSuccessStatus: 200
+    //optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
 app.use(json({limit: "100mb"}));
 app.use(urlencoded({limit: "100mb", extended: true}));
 app.use(
     session({
-        secret: process.env.SESSION_SECRET,
+        secret: process.env.SESSION_SECRET || "secret",
         resave: false,
         saveUninitialized: false,
         cookie:{
-            maxAge: 3600000,
-        }
+            maxAge: 60000 * 60,
+        },
     })
 );
 app.use(passport.initialize());
