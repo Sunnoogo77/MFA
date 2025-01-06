@@ -3,20 +3,36 @@ import { Strategy as LocalStrategy } from "passport-local";
 import bcrypt from "bcryptjs";
 import User from "../models/user.js";  
 
-passport.use(new LocalStrategy(
-    function(username, password, done) {
+passport.use(
+    new LocalStrategy( async (username, password, done) => {
         try {
             const user = await User.findOne({username});
             if(!user) {
                 return done(null, false, {message: "Incorrect username"});
             }
+            const isMacth = await bcrypt.compare(password, user.password);
+            if(!isMacth) {
+                return done(null, false, {message: "Incorrect password"});
+            }else {
+                return done(null, user);
+            }
         } catch (error) {
-            
+            return done(error);
         }
+    })
+);
 
-        User.findOne({ username: username }, async function (err, user) {
-            if (err) { return done(err); }
-            if (!user) { return done(null, false, { message: 'Incorrect username.' }); }
-            if (!user.verifyPassword(password)) { return done(null, false, { message: 'Incorrect password.' }); }
-            return done(null, user);
-        }); 
+passport.serializeUser((user, done) => {
+    console.log("We are inside serializing user");
+    done(null, user._id);
+});
+
+passport.deserializeUser( async(_id, done) => {
+    try {
+        console.log("We are inside serializing user");
+        const user = await User.findById(_id);
+        done(null, user);
+    } catch (error) {
+        done(error);
+    }
+});

@@ -20,8 +20,14 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    
+    console.log("The authenticate user is  : ", req.user);
+    res.status(200).json({
+        message: "User logged in successfully",
+        username: req.user.username,
+        isMfaActive: req.user.isMfaActive,
+    });
 };
+
 
 export const authStatus = async (req, res) => {};
 
