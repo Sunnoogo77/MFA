@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import User from "../models/user.js";
 
 
@@ -13,26 +13,14 @@ export const register = async (req, res) => {
         });
         console.log("New User : ", newUser);
         await newUser.save();
+        res.status(201).json({message: "User registered successfully"});
     } catch (error) {
         res.status(500).json({error: "Error registering user", message: error.message});  
     }
 };
 
 export const login = async (req, res) => {
-    try {
-        const {username, password} = req.body;
-        const user = await User.findOne({
-            username,
-        });
-        if (!user) {
-            res.status(404).json({error: "User not found"});
-        }
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            res.status(401).json({error: "Invalid password"});
-        }
-        req.session.user = user;
-        res.status(200).json({message: "Login successful", user});
+    
 };
 
 export const authStatus = async (req, res) => {};
