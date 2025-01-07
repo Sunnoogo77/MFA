@@ -1,11 +1,17 @@
+import { RouterProvider } from 'react-router-dom';
+import router from './routes';
 import './App.css'
 
 function App() {
 
   return (
-    <> 
-      <h1 className="text-3xl font-bold"> Hello World </h1>
-    </>
+    <div className='bg-slate-900 h-screen'>
+      <div className='flex flex-col items-center justify-center h-full'>
+        <SessionProvider>
+          <RouterProvider router={router}/>
+        </SessionProvider>
+      </div>
+    </div>
   );
   
 }
