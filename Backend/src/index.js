@@ -10,7 +10,6 @@ import './config/passportConfig.js';
 dotenv.config();
 dbConnect();
 
-
 const app = express();
 
 //Middlewares

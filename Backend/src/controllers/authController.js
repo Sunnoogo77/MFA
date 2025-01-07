@@ -64,10 +64,14 @@ export const setup2FA = async (req, res) => {
         const url = speakeasy.otpauthURL({
             secret: secret.base32,
             label: `${req.user.username}`,
-            issuer: "2FA Demo",
+            issuer: "Sun 2FA Demo",
+            encoding: "base32",
         });
         const qrImageUrl = await QRCode.toDataURL(url);
-        res.status(200).json({message: "2FA setup successfully", qrImageUrl});
+        res.status(200).json({
+            message: "2FA setup successfully", 
+            QRCode: qrImageUrl,
+        });
     } catch (error) {
         res.status(401).json({error: "Error setting up 2FA", message: error.message});
     }
