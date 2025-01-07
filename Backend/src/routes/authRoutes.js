@@ -22,7 +22,8 @@ router.post("/2fa/setup",
     (req, res, next) => {
     if(req.isAuthenticated()) return next();
     res.status(401).json({message: "Unauthorized user"});
-} ,setup2FA);
+}, setup2FA);
+
 
 //2FA Verify Route
 router.post("/2fa/verify", 

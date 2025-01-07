@@ -68,18 +68,6 @@ export const setup2FA = async (req, res) => {
         });
         const qrImageUrl = await QRCode.toDataURL(url);
         res.status(200).json({message: "2FA setup successfully", qrImageUrl});
-        // if(user.isMfaActive) {
-        //     return res.status(400).json({message: "2FA is already active"});
-        // }else {
-        //     //Generate 2FA secret
-        //     const {base32: secret} = speakeasy.generateSecret({
-        //         name: user.username,
-        //     });
-        //     user.isMfaActive = true;
-        //     user.twoFactorSecret = secret;
-        //     await user.save();
-        //     res.status(200).json({message: "2FA setup successfully", secret});
-        // }
     } catch (error) {
         res.status(401).json({error: "Error setting up 2FA", message: error.message});
     }

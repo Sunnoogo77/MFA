@@ -10,8 +10,8 @@ passport.use(
             if(!user) {
                 return done(null, false, {message: "Incorrect username"});
             }
-            const isMacth = await bcrypt.compare(password, user.password);
-            if(!isMacth) {
+            const isMatch = await bcrypt.compare(password, user.password);
+            if(!isMatch) {
                 return done(null, false, {message: "Incorrect password"});
             }else {
                 return done(null, user);
@@ -23,7 +23,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-    console.log("We are inside serializing user");
+    console.log("We are inside serializing user ------");
     done(null, user._id);
 });
 
