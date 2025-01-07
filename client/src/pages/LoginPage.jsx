@@ -8,11 +8,10 @@ const LoginPage = () => {
     const {login} = useSession();
 
     const handleLoginSuccess = (userData) => {
-        console.log("The user data is : ", userData);
+        console.log("The logged in user data is : ", userData);
         login(userData);
-        if(user)
         // navigate('/');
-    }
+    };
     return <LoginForm onLoginSuccess={handleLoginSuccess}/>;
 };
 
