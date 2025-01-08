@@ -16,7 +16,7 @@ export const SessionProvider = ({ children }) => {
             setIsLoggedIn(true);
             setUser(storeUser);
         }
-
+    }, []);
     const login = (userData) => {
         setIsLoggedIn(true);
         setUser(userData);

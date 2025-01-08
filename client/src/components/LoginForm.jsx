@@ -10,6 +10,24 @@ const LoginForm = ({onLoginSuccess}) => {
     const [error, setError] = useState("");
     const [message, setMessage] = useState("");
 
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const {data} = await login(username, password);
+            
+            setMessage(data.message);
+            setUsername("");
+            setPassword("");
+            onLoginSuccess(data);
+            
+        } catch (error) {
+            console.log("The error is : ", error.message);
+            setUsername("");
+            setPassword("");
+            setError("Invalid username or password");
+        }
+    }
+
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
@@ -28,21 +46,7 @@ const LoginForm = ({onLoginSuccess}) => {
             setError("Something went wrong during user registration");
         }
     }
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const {data} = await login(username, password);
-            setMessage(data.message);
-            setUsername("");
-            setPassword("");
-            onLoginSuccess(data);
-        } catch (error) {
-            console.log("The error is : ", error.message);
-            setUsername("");
-            setPassword("");
-            setError("Invalid username or password");
-        }
-    }
+    
 
     const handleRegisterToggle = () => {
         setIsRegister(!isRegister);
@@ -128,3 +132,4 @@ const LoginForm = ({onLoginSuccess}) => {
 };
 
 export default LoginForm;
+
