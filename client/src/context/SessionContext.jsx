@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { data } from 'react-router-dom';
 
 const SessionContext = createContext();
@@ -15,8 +15,10 @@ export const SessionProvider = ({ children }) => {
     };
 
     const logout = (data) => {
-        setIsLoggedIn(false);
-        setUser(null);
+        if (data) {
+            setIsLoggedIn(false);
+            setUser(null);
+        }
     };
 
     return (

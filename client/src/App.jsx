@@ -1,4 +1,5 @@
 import { RouterProvider } from 'react-router-dom';
+import { SessionProvider } from './context/SessionContext';
 import router from './routes';
 import './App.css'
 

@@ -32,7 +32,6 @@ const LoginForm = ({onLoginSuccess}) => {
         e.preventDefault();
         try {
             const {data} = await login(username, password);
-            setIsRegister(false);
             setMessage(data.message);
             setUsername("");
             setPassword("");
@@ -116,7 +115,7 @@ const LoginForm = ({onLoginSuccess}) => {
                 </button>
                 <div>
                     <p className='pt-4 text-center text-gray-900 text-sm font-light'>
-                        {isRegister ? "Already have an account ?" : "Don't have any account !?"}
+                        {isRegister ? "Already have an account ?" : "Don't have any account !?"}{" "}
                         <Link to="" onClick={handleRegisterToggle}>
                             {isRegister ? "Login" : " Create Account"}
                         </Link>
