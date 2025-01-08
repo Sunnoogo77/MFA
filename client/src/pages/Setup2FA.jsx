@@ -1,11 +1,8 @@
 import React from 'react';
+import TwoFASetup from '../components/TwoFASetup';
 
 const Setup2FA = () => {
-    return (
-        <div>
-        <h1>Setup2FA</h1>
-        </div>
-    );
+    return <TwoFASetup />;
 };
 
 export default Setup2FA;
