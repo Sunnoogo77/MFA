@@ -7,6 +7,7 @@ const TwoFASetup = ({ onSetupComplete }) => {
 
     const fetchQrCode = async () => {
         const { data } = await setup2FA();
+        console.log(data);
         setResponse(data);
     };
 

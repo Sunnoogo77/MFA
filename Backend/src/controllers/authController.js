@@ -69,6 +69,8 @@ export const setup2FA = async (req, res) => {
         });
         const qrImageUrl = await QRCode.toDataURL(url);
         res.status(200).json({
+            //Where I add the secret and QRCode
+            secret: secret.base32,
             message: "2FA setup successfully", 
             QRCode: qrImageUrl,
         });
