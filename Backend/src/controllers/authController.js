@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
 
+
 export const register = async (req, res) => {
     try {
         const {username, password} = req.body;
@@ -50,7 +51,7 @@ export const logout = async (req, res) => {
         if (err) {
             return next(err);
         }
-        res.session.destroy((err) => {
+        req.session.destroy((err) => {
             if (err) {
                 return next(err);
             }
@@ -120,3 +121,5 @@ export const reset2FA = async (req, res) => {
         res.status(500).json({error: "Error resetting 2FA", message: error.message});
     }
 };
+
+
