@@ -39,7 +39,7 @@ const TwoFAVerification = ({onVerifySuccess, onResetSuccess}) => {
                 </h2>
             </div>
             <hr className='text-gray-200 mt-6 mb-6' />
-            <p className='text-center text-gray-600 text-lg font-light '> 
+            <p className='text-center text-gray-600 text-lg font-light p-4 '> 
                 Please enter 6-digit Time based OTP to verify your account
             </p>
             <div className='p-6'>
@@ -58,7 +58,7 @@ const TwoFAVerification = ({onVerifySuccess, onResetSuccess}) => {
                 {error && <p className='text-red-500 text-sm font-light mb-3'>{error}</p>}
                 <button 
                     type='submit'
-                    className='w-full bg-blue-500 text-white py-2 rounded-md'
+                    className='w-full bg-blue-500 text-white py-2 rounded-md mb-4'
                 >
                     Verify TOTP
                 </button>

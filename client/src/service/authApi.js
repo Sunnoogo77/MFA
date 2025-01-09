@@ -32,7 +32,7 @@ export const authStatus = async () => {
     );
 };
 
-export const logout = async () => {
+export const logoutUser = async () => {
     return await api.post(
         "/auth/logout",
         {},
