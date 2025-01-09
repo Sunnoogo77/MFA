@@ -96,4 +96,3 @@ npm start
 ### **Additional Tools**  
 - **Git**  
 - **VS Code**
-- 
