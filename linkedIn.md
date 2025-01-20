@@ -1,7 +1,3 @@
-Voici une version mise à jour de ton post LinkedIn :
-
----
-
 ### **🚀 Découverte d’un projet MFA (Multi-Factor Authentication) 🔐**
 
 ### **Le MFA, qu’est-ce que c’est ?**  
@@ -45,14 +41,3 @@ Ce projet a été réalisé en suivant deux tutoriels inspirants de la chaîne Y
 2. [Build a Two-Factor Authentication System with React in 90 Minutes](https://www.youtube.com/watch?v=dndLA0EPQWY)
 
 Ces ressources m'ont permis de mieux comprendre les concepts et de les mettre en pratique.
-
----
-
-### **Diagramme explicatif**  
-Ci-dessous, un diagramme simple qui illustre les trois facteurs d'authentification utilisés dans un système MFA.  
-
-(*Incluez le diagramme généré ci-dessus dans votre post.*)
-
----
-
-Ton post est prêt à attirer l'attention ! 🚀 Si tu as d'autres ajustements ou si tu veux explorer plus de détails, fais-le-moi savoir ! 😊
